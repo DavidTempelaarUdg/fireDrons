@@ -13,7 +13,6 @@ class myRobot extends Robot {
         super(x, y, e);
     }
     
-    //adsfsadfsadf
     
     @Override
     public void mourerobot(){
