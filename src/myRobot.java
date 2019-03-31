@@ -13,13 +13,6 @@ class myRobot extends Robot {
         super(x, y, e);
     }
     
-    //Wasa
-    
-    /////PARt 2
-    
-    //sadfsadfa
-    
-    
     @Override
     public void mourerobot(){
         double xi,yi;
