@@ -13,8 +13,6 @@ class myRobot extends Robot {
         super(x, y, e);
     }
     
-    //WASSAP
-    
     @Override
     public void mourerobot(){
         double xi,yi;
