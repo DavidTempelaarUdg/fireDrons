@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author Llorenç
+ * 
  */
 public class Arbre {
     double x;
