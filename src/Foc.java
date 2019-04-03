@@ -27,7 +27,7 @@ public class Foc {
     }
     
     public ImageIcon getImatge() {
-      String dir = System.getProperty("user.dir")+ "\\Imatges\\fire"+Integer.toString(estat)+".png";
+      String dir = System.getProperty("user.dir")+ "//Imatges//fire"+Integer.toString(estat)+".png";
       return new ImageIcon( dir);
     }
 }

@@ -14,7 +14,7 @@ public class Refill {
     }
 
     public ImageIcon getImatge() {
-       String dir = System.getProperty("user.dir")+ "\\Imatges\\refill.png";
+       String dir = System.getProperty("user.dir")+ "//Imatges//refill.png";
        return new ImageIcon( dir);
     }
 }

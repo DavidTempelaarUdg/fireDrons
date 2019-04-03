@@ -20,7 +20,7 @@ public class Arbre {
     }
     
     public ImageIcon getImatge() {
-       String dir = System.getProperty("user.dir")+ "\\Imatges\\arbre.jpg";
+       String dir = System.getProperty("user.dir")+ "//Imatges//arbre.jpg";
        return new ImageIcon( dir);
     }
 }

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FireDrons">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/FireDrons.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

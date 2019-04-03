@@ -151,7 +151,7 @@ abstract class Robot {
     }
     
     public ImageIcon getImatge(){
-       String dir = System.getProperty("user.dir")+ "\\Imatges\\robot" + Integer.toString((int)ple) + ".jpg";
+       String dir = System.getProperty("user.dir")+ "//Imatges//robot" + Integer.toString((int)ple) + ".jpg";
        return new ImageIcon( dir);
     }
     

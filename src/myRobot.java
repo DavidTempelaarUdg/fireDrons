@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * @author Llorenç
  */
-class myRobot extends Robot {
+class myRobot extends Robot{
     
     Map<String, Integer> ponderacio;
     
@@ -126,7 +126,7 @@ class myRobot extends Robot {
         else if(dist>4) d = 4;
         
         String mp = String.valueOf(d) + String.valueOf(a);
-        System.out.println("Hueristica a trobar: "+mp);
+        
         return ponderacio.get(mp);
     }
 }
