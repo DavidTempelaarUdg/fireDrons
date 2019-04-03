@@ -50,7 +50,7 @@ abstract class Robot {
             if(yin>escena.dimy-1){
                 yin =escena.dimy-1;
             }
-            
+
             //nomes permetem avançar de 1 en 1
             if(x+1==xin || x-1==xin){
               x=xin;  
@@ -65,9 +65,8 @@ abstract class Robot {
             if(mogut){
                 //hem gastat energia
                 energia++;
-            }
-            
-        }
+            }   
+        } 
     }
     
     public double getX(){
