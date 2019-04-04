@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 /*
  * Exemple de robot simple
@@ -88,6 +89,15 @@ class myRobot extends Robot {
             }
             //System.out.println("basura - " + Integer.toString((int) xi) + "," + Integer.toString((int) yi));
         }
+
+        //per evitar el quedar clavat si es vol anar a la  mateixa casella
+        int i=0;
+        while(ocupada(anarX(xi), anarY(yi)) && i<4){
+            xi = ThreadLocalRandom.current().nextInt(0,(int)escena.dimx);
+            yi = ThreadLocalRandom.current().nextInt(0,(int)escena.dimy);
+            i++;
+        }
+
         setPos(getX()+anarX(xi),getY()+anarY(yi));
         
         //System.out.println("Numero Focs - " + Integer.toString((int) escena.Focs.size()));
