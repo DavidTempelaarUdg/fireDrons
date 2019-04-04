@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
  * @author Llorenç
  */
 abstract class Robot {
-    
+
     private double energia;
     private double punts;
     
@@ -175,6 +175,10 @@ abstract class Robot {
             yanar = -1;
         }
         return yanar;
+    }
+
+    public boolean esActual(double a, double b){
+        return (a==x && b==y);
     }
     
     abstract public void mourerobot();

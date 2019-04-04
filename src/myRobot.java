@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,17 +11,28 @@ import java.util.Map;
  * @author Llorenç
  */
 class myRobot extends Robot {
-    
+
     Map<String, Integer> ponderacio;
-    
-    //No modificar el constructor
+    Posicio focObjectiu;
+    int heurObjectiu;
+
+    public class Posicio {
+        double x;
+        double y;
+
+        public Posicio(double a, double b){x = a; y = b;}
+        public double getX(){return x;}
+        public double getY(){return y;}
+        public boolean sinPos(){return (x==-1 && y==-1);}
+    }
+
     myRobot(double x,double y, Escenari e){
         //Inicialitzem la superclasse
         super(x, y, e);
-    }
-    
-    @Override
-    public void mourerobot(){
+
+        focObjectiu = new Posicio(-1,-1);
+        heurObjectiu = 0;
+
         ponderacio = new HashMap<>();
         ponderacio.put("00", 400);
         ponderacio.put("10", 300);
@@ -43,6 +55,11 @@ class myRobot extends Robot {
         ponderacio.put("42", 15);
         ponderacio.put("43", 20);
         ponderacio.put("44", 25);
+    }
+    
+    @Override
+    public void mourerobot(){
+
 
         double xi,yi;
         xi=0;
@@ -62,6 +79,8 @@ class myRobot extends Robot {
             if(f!=null){
                 xi = f.x;
                 yi = f.y;
+
+                escena.dialeg.actFocHeur(iden(),f,heurObjectiu);
             }
             else{
                 xi = escena.Diposit.x;
@@ -75,8 +94,19 @@ class myRobot extends Robot {
         
         apaga();
         emplena();
-    } 
-    
+    }
+
+    public int iden(){
+        for(int i = 0; i<escena.Robots.size();i++){
+            if(esActual(escena.Robots.get(i).getX(),escena.Robots.get(i).getY())){return i;}
+        }
+        return -1;
+    }
+
+//    public Posicio getPosObj(){
+//        return focObjectiu;
+//    }
+
     public int arbresVoltant(double xin, double yin){
         int i = 0;
         int compt = 0;
@@ -95,6 +125,8 @@ class myRobot extends Robot {
     }
     
     public Foc buscarFocObjectiu(){
+        System.out.println("AL INICI");
+        escena.dialeg.mostrar();
         Foc millor = null;
         int heurMillor = 0;
         
@@ -106,14 +138,32 @@ class myRobot extends Robot {
                 int arb = this.arbresVoltant(escena.Focs.get(i).x, escena.Focs.get(i).y);
                 int heur = this.heuristica(dist, arb);
 
-                if(heurMillor==0 || heur>heurMillor){
+                if(!this.existeixMillor(escena.Focs.get(i), heur) && (heurMillor==0 || heur>heurMillor)){
                     heurMillor = heur;
                     millor = escena.Focs.get(i);
                 }
             }
         }
+
         if(heurMillor==0) return null;
+
+        System.out.println("AL FINAL");
+        escena.dialeg.mostrar();
+
+        heurObjectiu = heurMillor;
         return millor;
+    }
+
+    public boolean existeixMillor(Foc f, int heurThis){
+
+        for(int i=0; i<escena.dialeg.size();i++){
+            if(i!=iden()){
+                if((escena.dialeg.getHeur(i)>=heurThis)
+                  && (escena.dialeg.getX(i)==f.x && escena.dialeg.getY(i)==f.y))
+                    { return true; }
+            }
+        }
+        return false;
     }
     
     public int distancia(double ax, double ay, double bx, double by){
@@ -126,7 +176,7 @@ class myRobot extends Robot {
         else if(dist>4) d = 4;
         
         String mp = String.valueOf(d) + String.valueOf(a);
-        System.out.println("Hueristica a trobar: "+mp);
+
         return ponderacio.get(mp);
     }
 }

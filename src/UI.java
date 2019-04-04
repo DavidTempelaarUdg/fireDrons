@@ -192,7 +192,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         JFileChooser escollit = new JFileChooser();
+         JFileChooser escollit = new JFileChooser(System.getProperty("user.dir") + "//escenaris");
          int option = escollit.showOpenDialog(this);
          if (option == JFileChooser.APPROVE_OPTION) {
              escena = new Escenari();

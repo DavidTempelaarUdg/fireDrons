@@ -25,6 +25,7 @@ public class Escenari {
     Refill Diposit;
     double dimx;
     double dimy;
+    DialegDrons dialeg;
    
     boolean fi = false;
     
@@ -65,7 +66,7 @@ public class Escenari {
                 }
             }
         }
-               
+        dialeg = new DialegDrons(Robots.size());
     }
     
     public boolean Step(){
